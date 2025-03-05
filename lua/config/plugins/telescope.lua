@@ -15,13 +15,30 @@ return {
 
             require('telescope').load_extension('fzf')
 
-            vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags)
-            vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files)
+            -- Quick keymap for nvim adjustment
             vim.keymap.set('n', '<leader>en', function ()
-                require('telescope.builtin').find_files {
-                    cwd = vim.fn.stdpath('config')
-                }
+                local opts = require('telescope.themes').get_dropdown({
+                    cwd = vim.fn.stdpath('config');
+                    previewer = false;
+                    layout_config = {
+                        height = 30
+                    };
+                });
+                require('telescope.builtin').find_files(opts)
             end)
+
+            vim.keymap.set('n', '<leader>ob', require('telescope.builtin').buffers) -- Only show filename
+            vim.keymap.set('n', '<leader>oh', require('telescope.builtin').help_tags)
+            vim.keymap.set('n', '<leader>of', function ()
+                local opts = require('telescope.themes').get_dropdown({
+                    previewer = false;
+                    layout_config = {
+                        height = 30
+                    };
+                });
+                require('telescope.builtin').find_files(opts)
+            end)
+
         end
     }
 }
