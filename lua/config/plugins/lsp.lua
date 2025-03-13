@@ -20,9 +20,6 @@ return {
             require('lspconfig').clangd.setup { capabilities = capabilities }
 
 
-            vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end)
-            vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end)
-
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
                 callback = function(event)
@@ -30,8 +27,12 @@ return {
                         vim.keymap.set('n', keys, func, { buffer = event.buf })
                     end
 
+                    map("<leader>f", function() vim.lsp.buf.format() end)
+                    map("<leader>rn", function() vim.lsp.buf.rename() end)
+
                     map('gr', require('telescope.builtin').lsp_references)
                     map('gd', require('telescope.builtin').lsp_definitions)
+                    map("gD", function() vim.lsp.buf.declaration() end)
                     map('gi', require('telescope.builtin').lsp_implementations)
 
                     map('<leader>td', require('telescope.builtin').lsp_type_definitions)
