@@ -27,7 +27,7 @@ return {
                         vim.keymap.set('n', keys, func, { buffer = event.buf })
                     end
 
-                    map("<leader>f", function() vim.lsp.buf.format() end)
+                    map("<leader>ff", function() vim.lsp.buf.format() end)
                     map("<leader>rn", function() vim.lsp.buf.rename() end)
 
                     map('gr', require('telescope.builtin').lsp_references)

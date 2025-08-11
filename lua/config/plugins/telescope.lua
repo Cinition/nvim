@@ -16,7 +16,7 @@ return {
             require('telescope').load_extension('fzf')
 
             -- Quick keymap for nvim adjustment
-            vim.keymap.set('n', '<leader>en', function()
+            vim.keymap.set('n', '<leader>np', function()
                 local opts = require('telescope.themes').get_dropdown({
                     cwd = vim.fn.stdpath('config'),
                     previewer = false,
@@ -27,10 +27,10 @@ return {
                 require('telescope.builtin').find_files(opts)
             end)
 
-            vim.keymap.set('n', '<leader>os', require('telescope.builtin').live_grep) -- Only show filename
-            vim.keymap.set('n', '<leader>ob', require('telescope.builtin').buffers) -- Only show filename
-            vim.keymap.set('n', '<leader>oh', require('telescope.builtin').help_tags)
-            vim.keymap.set('n', '<leader>of', function()
+            vim.keymap.set('n', '<leader>s', require('telescope.builtin').live_grep) -- Only show filename
+            vim.keymap.set('n', '<leader>b', require('telescope.builtin').buffers)   -- Only show filename
+            vim.keymap.set('n', '<leader>nh', require('telescope.builtin').help_tags)
+            vim.keymap.set('n', '<leader>f', function()
                 local opts = require('telescope.themes').get_dropdown({
                     previewer = false,
                     layout_config = {
