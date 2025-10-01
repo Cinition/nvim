@@ -19,7 +19,6 @@ return {
             require('lspconfig').zls.setup { capabilities = capabilities }
             require('lspconfig').clangd.setup { capabilities = capabilities }
 
-
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
                 callback = function(event)
@@ -29,15 +28,7 @@ return {
 
                     map("<leader>ff", function() vim.lsp.buf.format() end)
                     map("<leader>rn", function() vim.lsp.buf.rename() end)
-
-                    map('gr', require('telescope.builtin').lsp_references)
-                    map('gd', require('telescope.builtin').lsp_definitions)
                     map("gD", function() vim.lsp.buf.declaration() end)
-                    map('gi', require('telescope.builtin').lsp_implementations)
-
-                    map('<leader>td', require('telescope.builtin').lsp_type_definitions)
-                    map('<leader>ds', require('telescope.builtin').lsp_document_symbols)
-                    map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols)
                 end
             });
         end,
