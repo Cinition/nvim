@@ -29,6 +29,7 @@ return {
             }
             require('lspconfig').zls.setup { capabilities = capabilities }
             require('lspconfig').clangd.setup { capabilities = capabilities }
+            require('lspconfig').rust_analyzer.setup {capabilities = capabilities}
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
